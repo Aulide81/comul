@@ -50,8 +50,6 @@ shinyServer(function(input, output, session) {
     }
   })
   
-  
-  
 output$descarga <- downloadHandler(
     filename = function() { 
       c("Output.doc")
