@@ -9,7 +9,6 @@ shinyServer(function(input, output, session) {
     wb<-loadWorkbook(dir)
     hojas<-names(getSheets(wb))
     list(dir=dir,hojas=hojas)
-
   })
 
   observe({
@@ -44,9 +43,9 @@ shinyServer(function(input, output, session) {
  output$ruta<-renderText(paste("Archivo Cargado:",archivo()$dir))
   output$plot1<-renderPlot({
     if(is.null(input$items)){
-      grafico(resultado()[[1]],draw=input$draw,dim=input$dim)
+      plot(resultado()[[1]],draw=input$draw,dim=input$dim)
     }else{
-      grafico(resultado()[[1]],select=input$items,draw=input$draw,dim=input$dim)
+      plot(resultado()[[1]],select=input$items,draw=input$draw,dim=input$dim)
     }
   })
   
