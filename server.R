@@ -16,7 +16,7 @@ grafico<-function (x, dim = c(1, 2), draw = c("col.sup", "row.sup"), select) {
     df <- df[df$Puntos %in% draw, c(dim, ncol(df)), drop = F]
     plot(df[, -ncol(df), drop = F], xlim = limx, ylim = limy, 
         cex = 0, cex.axis = 0.6, cex.lab = 0.6)
-    text(df[, -ncol(df), drop = F], rownames(df), cex = 1, 
+    text(df[, -ncol(df), drop = F], rownames(df), cex = 1.2, 
         col = rainbow(nlevels(df$Puntos), v = 0.6)[as.numeric(df$Puntos)])
     abline(h = 0, v = 0, lty = 3)
 }
