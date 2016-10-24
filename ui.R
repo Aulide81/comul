@@ -39,33 +39,3 @@ shinyUI(
                    
 )
 )
-
-
-# Filters<-rbind(Filters,xlsx=c("Excel files (*.xlsx,*xls)","*.xlsx;*xls" ))
-# dir<-choose.files(filters = Filters[c("xlsx"),])
-# wb<-loadWorkbook(dir)
-# hojas<-names(getSheets(wb))
-# archivo<-list(dir=dir,hojas=hojas)
-# rm(Filters,dir,wb,hojas)
-# ls()
-# 
-# archivo[[2]]
-# for(i in 1:length(input$hojas)){
-# assign(paste0("tabla",i),read.xlsx(archivo[[1]],sheetName=input$hojas[i]))
-# }
-# 
-# lista<-list()
-# inputhojas<-archivo[[2]]
-# for(i in 1:length(inputhojas)){
-#   #assign(paste0("tabla",i),read.xlsx(archivo[[1]],sheetName=inputhojas[i]))
-#   lista<-c(lista,list(read.xlsx(archivo[[1]],sheetName=inputhojas[i])))
-# }
-# lista<-lapply(lista,function(k){
-#   rownames(k)<-k[,1]
-#   k<-k[,-1]})
-# resultado<-plot(comul(lista))
-# resultado<-comul(lista)
-# ls(resultado)
-# summary(resultado)
-# resultado$eig
-# resultado$col.sup
