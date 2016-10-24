@@ -1,62 +1,6 @@
 library(xlsx)
 library(estadisticos)
 
-#shinyServer(function(input, output, session) {
-
-#sdasdas
-# archivo<-eventReactive(input$archivo,{
-#   Filters<-rbind(Filters,xlsx=c("Excel files (*.xlsx,*xls)","*.xlsx;*xls" ))
-#   dir<-choose.files(filters = Filters[c("xlsx"),])
-#   wb<-loadWorkbook(dir)
-#   hojas<-names(getSheets(wb))
-#   list(dir=dir,hojas=hojas)
-# 
-# })
-# 
-# observe({
-#   updateSelectInput(session, "hojas",
-#                     label = "Seleccionar hoja(s)",
-#                     choices = archivo()$hojas
-#   )
-# })
-# 
-# tablas<-eventReactive(input$hojas,{
-# lista<-list()
-# for(i in 1:length(input$hojas)){
-#   lista<-c(lista,list(read.xlsx(archivo()[[1]],sheetName=input$hojas[i])))
-# }
-# 
-# lista<-lapply(lista,function(k){
-#   rownames(k)<-k[,1]
-#   k<-k[,-1]})
-# })
-# 
-# 
-# resultado<-eventReactive(input$compute,{
-#    comul(tablas(),sufix=input$hojas)
-#    })
-# 
-# observe({
-#   updateSelectInput(session, "items",
-#                     label = "Seleccionar item(s)",
-#                     choices =c(rownames(tablas()[[1]]),names(tablas()[[1]])),
-#                     select =c(rownames(tablas()[[1]]),names(tablas()[[1]]))
-#   )
-# })
-# 
-# 
-# output$ruta<-renderText(paste("Archivo Cargado:",archivo()$dir))
-# output$plot1<-renderPlot({
-#   if(is.null(input$items)){
-#     plot(resultado(),draw=input$draw)
-#   }else{
-#     plot(resultado(),select=input$items,draw=input$draw)
-#   }
-# })
-
-
-#})
-
 shinyServer(function(input, output, session) {  
   
   archivo<-eventReactive(input$archivo,{
@@ -117,5 +61,3 @@ output$descarga <- downloadHandler(
    }
   )
 })
-
-
