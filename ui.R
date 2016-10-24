@@ -26,8 +26,8 @@ shinyUI(
                                 sliderInput("dim","Dim Draw",min=1,max=10,value=c(1,2)),
                                 br(),
                                 numericInput("ndim", "Numero Dimensiones", 2, min = 1,width =100),
-                                downloadButton("descarga","Descargar Dimensiones"),
-                                downloadButton("descarga2","Descargar Gráfico"),
+                                downloadButton("descarga","Dimensiones"),
+                                downloadButton("descarga2","Gráfico"),
                                 width=2
                               ),
                               mainPanel(
