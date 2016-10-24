@@ -1,7 +1,7 @@
 library(xlsx)
 library(estadisticos)
 
-plot.comul<-function (x, dim = c(1, 2), draw = c("col.sup", "row.sup"), select) {
+grafico<-function (x, dim = c(1, 2), draw = c("col.sup", "row.sup"), select) {
     X <- factor(c(rep("col", nrow(x$col$coord)), rep("row", nrow(x$row$coord)), 
         rep("col.sup", nrow(x$col.sup$coord)), rep("row.sup", 
             nrow(x$row.sup$coord))), levels = c("col", "row", 
@@ -63,9 +63,9 @@ shinyServer(function(input, output, session) {
  output$ruta<-renderText(paste("Archivo Cargado:",archivo()$dir))
   output$plot1<-renderPlot({
     if(is.null(input$items)){
-      plot.comul(resultado()[[1]],draw=input$draw,dim=input$dim)
+      grafico(resultado()[[1]],draw=input$draw,dim=input$dim)
     }else{
-      plot.comul(resultado()[[1]],select=input$items,draw=input$draw,dim=input$dim)
+      grafico(resultado()[[1]],select=input$items,draw=input$draw,dim=input$dim)
     }
   })
   
@@ -96,9 +96,9 @@ output$descarga2 <- downloadHandler(
 content = function(file) {
 pdf(file=file,width=7,height=5)
   if(is.null(input$items)){
-      estadisticos::plot(resultado()[[1]],draw=input$draw,dim=input$dim)
+      plot(resultado()[[1]],draw=input$draw,dim=input$dim)
     }else{
-      estadisticos::plot(resultado()[[1]],select=input$items,draw=input$draw,dim=input$dim)
+      plot(resultado()[[1]],select=input$items,draw=input$draw,dim=input$dim)
     }
 dev.off()
 })
