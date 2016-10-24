@@ -69,6 +69,7 @@ pdf(file=file,width=7,height=5)
       plot(resultado()[[1]],draw=input$draw,dim=input$dim)
     }else{
       plot(resultado()[[1]],select=input$items,draw=input$draw,dim=input$dim)
-    }}
-dev.off())
+    }
+dev.off()
+})
 })
