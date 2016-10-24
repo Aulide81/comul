@@ -58,4 +58,17 @@ output$descarga <- downloadHandler(
     summary(resultado()[[1]],nbelements=Inf,ncp=input$ndim,file=file)
    }
   )
+  
+output$descarga2 <- downloadHandler(
+    filename = function() { 
+      c("Plot.pdf")
+      },
+content = function(file) {
+pdf(file=file,width=7,height=5)
+  if(is.null(input$items)){
+      plot(resultado()[[1]],draw=input$draw,dim=input$dim)
+    }else{
+      plot(resultado()[[1]],select=input$items,draw=input$draw,dim=input$dim)
+    }}
+dev.off())
 })
