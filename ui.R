@@ -31,7 +31,7 @@ shinyUI(
                               ),
                               mainPanel(
                                 mainPanel(
-                                plotOutput('plot1', width ="1500",height = "700px"),
+                                plotOutput('plot1', width ="1500",height = "800px"),
                                 textOutput("ruta")
                               )
                             )
