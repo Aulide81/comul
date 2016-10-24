@@ -1,7 +1,7 @@
 library(xlsx)
 library(estadisticos)
 
-plot.comul2<-function (x, dim = c(1, 2), draw = c("col.sup", "row.sup"), select) {
+plot.comul<-function (x, dim = c(1, 2), draw = c("col.sup", "row.sup"), select) {
     X <- factor(c(rep("col", nrow(x$col$coord)), rep("row", nrow(x$row$coord)), 
         rep("col.sup", nrow(x$col.sup$coord)), rep("row.sup", 
             nrow(x$row.sup$coord))), levels = c("col", "row", 
@@ -20,6 +20,7 @@ plot.comul2<-function (x, dim = c(1, 2), draw = c("col.sup", "row.sup"), select)
         col = rainbow(nlevels(df$Puntos), v = 0.6)[as.numeric(df$Puntos)])
     abline(h = 0, v = 0, lty = 3)
 }
+                                          
 shinyServer(function(input, output, session) {  
   
   archivo<-eventReactive(input$archivo,{
@@ -63,9 +64,9 @@ shinyServer(function(input, output, session) {
  output$ruta<-renderText(paste("Archivo Cargado:",archivo()$dir))
   output$plot1<-renderPlot({
     if(is.null(input$items)){
-      plot.comul2(resultado()[[1]],draw=input$draw,dim=input$dim)
+      plot.comul(resultado()[[1]],draw=input$draw,dim=input$dim)
     }else{
-      plot.comul2(resultado()[[1]],select=input$items,draw=input$draw,dim=input$dim)
+      plot.comul(resultado()[[1]],select=input$items,draw=input$draw,dim=input$dim)
     }
   })
   
@@ -96,9 +97,9 @@ output$descarga2 <- downloadHandler(
 content = function(file) {
 pdf(file=file,width=7,height=5)
   if(is.null(input$items)){
-      plot(resultado()[[1]],draw=input$draw,dim=input$dim)
+      estadisticos::plot(resultado()[[1]],draw=input$draw,dim=input$dim)
     }else{
-      plot(resultado()[[1]],select=input$items,draw=input$draw,dim=input$dim)
+      estadisticos::plot(resultado()[[1]],select=input$items,draw=input$draw,dim=input$dim)
     }
 dev.off()
 })
