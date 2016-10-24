@@ -51,12 +51,23 @@ shinyServer(function(input, output, session) {
   })
   
 output$descarga <- downloadHandler(
+    #filename = function() { 
+      #c("Output.doc")
+    #},
+    #content = function(file) {
+    #summary(resultado()[[1]],nbelements=Inf,ncp=input$ndim,file=file)
+   #}
+  
     filename = function() { 
-      c("Output.doc")
+      c("Output.xlsx")
     },
-    content = function(file) {
-    summary(resultado()[[1]],nbelements=Inf,ncp=input$ndim,file=file)
-   }
+  content = function(file) {
+    write.xlsx(as.data.frame(resultado()[[1]][[1]]),file,sheetName="Eigenvalue",row.names=T)
+    write.xlsx(as.data.frame(resultado()[[1]][[3]]),file,append=T,sheetName="Row",row.names=T)
+    write.xlsx(as.data.frame(resultado()[[1]][[4]]),file,append=T,sheetName="Col",row.names=T)
+    write.xlsx(as.data.frame(resultado()[[1]][[7]]),file,append=T,sheetName="Col.Sup",row.names=T)
+    write.xlsx(as.data.frame(resultado()[[1]][[6]]),file,append=T,sheetName="Row.Sup",row.names=T)
+    }
   )
   
 output$descarga2 <- downloadHandler(
